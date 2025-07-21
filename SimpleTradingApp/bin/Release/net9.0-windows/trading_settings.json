@@ -1,0 +1,6 @@
+{
+  "TradingMode": "Live Trading",
+  "Host": "127.0.0.1",
+  "Port": 7496,
+  "ClientId": 101
+}

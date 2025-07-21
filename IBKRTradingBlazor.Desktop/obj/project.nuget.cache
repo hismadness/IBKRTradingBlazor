@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "MGkBgXmRC/g=",
+  "success": true,
+  "projectFilePath": "C:\\IBKRTradingBlazor\\IBKRTradingBlazor.Desktop\\SimpleTradingApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\arndt\\.nuget\\packages\\google.protobuf\\3.31.1\\google.protobuf.3.31.1.nupkg.sha512"
+  ],
+  "logs": []
+}

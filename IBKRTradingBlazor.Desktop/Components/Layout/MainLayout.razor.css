@@ -1,0 +1,134 @@
+.page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+.sidebar {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
+
+.top-row {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row ::deep a, .top-row ::deep .btn-link {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+        text-decoration: none;
+    }
+
+        .top-row ::deep a:hover, .top-row ::deep .btn-link:hover {
+            text-decoration: underline;
+        }
+
+        .top-row ::deep a:first-child {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+@media (max-width: 640.98px) {
+    .top-row {
+        justify-content: space-between;
+    }
+
+        .top-row ::deep a, .top-row ::deep .btn-link {
+            margin-left: 0;
+        }
+}
+
+@media (min-width: 641px) {
+    .page {
+        flex-direction: row;
+    }
+
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+        .top-row.auth ::deep a:first-child {
+            flex: 1;
+            text-align: right;
+            width: 0;
+        }
+
+    .top-row, article {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+
+.tab-ribbon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    background: #181c24;
+    border-bottom: 2px solid #2c2f36;
+    height: 3.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.tab-link {
+    flex: 1 1 0;
+    text-align: center;
+    color: #d7d7d7;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 1rem 0;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    text-decoration: none;
+    border-right: 1px solid #2c2f36;
+}
+
+.tab-link:last-child {
+    border-right: none;
+}
+
+.tab-link.active, .tab-link.active:focus, .tab-link.active:visited {
+    color: #fff;
+    background: #2c2f36;
+    border-bottom: 3px solid #007bff;
+}
+
+.tab-link:hover {
+    background: #23272f;
+    color: #fff;
+}
+
+@media (max-width: 900px) {
+    .tab-ribbon {
+        flex-direction: column;
+        height: auto;
+    }
+    .tab-link {
+        border-right: none;
+        border-bottom: 1px solid #2c2f36;
+        padding: 0.75rem 0;
+    }
+    .tab-link:last-child {
+        border-bottom: none;
+    }
+}

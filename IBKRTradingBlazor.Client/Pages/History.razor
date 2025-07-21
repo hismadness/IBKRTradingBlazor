@@ -1,0 +1,85 @@
+@page "/history"
+@inject HttpClient Http
+
+<h3>History</h3>
+@if (orderHistory == null)
+{
+    <div>Loading order history...</div>
+}
+else if (orderHistory.Count == 0)
+{
+    <div>No order history available.</div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Symbol</th>
+                <th>SecType</th>
+                <th>Exchange</th>
+                <th>Currency</th>
+                <th>Side</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Time</th>
+                <th>PnL</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in orderHistory)
+            {
+                <tr>
+                    <td>@item.OrderId</td>
+                    <td>@item.Symbol</td>
+                    <td>@item.SecType</td>
+                    <td>@item.Exchange</td>
+                    <td>@item.Currency</td>
+                    <td>@item.Side</td>
+                    <td>@item.Shares</td>
+                    <td>@item.Price</td>
+                    <td>@item.Time</td>
+                    <td>@item.PnL.ToString("C2")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<OrderHistoryItem>? orderHistory;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadOrderHistory();
+    }
+
+    private async Task LoadOrderHistory()
+    {
+        orderHistory = null;
+        try
+        {
+            orderHistory = await Http.GetFromJsonAsync<List<OrderHistoryItem>>("/api/history");
+        }
+        catch
+        {
+            orderHistory = new List<OrderHistoryItem>();
+        }
+        StateHasChanged();
+    }
+
+    public class OrderHistoryItem
+    {
+        public int OrderId { get; set; }
+        public string? Symbol { get; set; }
+        public string? SecType { get; set; }
+        public string? Exchange { get; set; }
+        public string? Currency { get; set; }
+        public string? Side { get; set; }
+        public double Shares { get; set; }
+        public double Price { get; set; }
+        public string? Time { get; set; }
+        public double PnL { get; set; }
+    }
+} 

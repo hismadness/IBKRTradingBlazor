@@ -1,0 +1,14 @@
+C:\IBKRTradingBlazor\SimpleTradingApp\bin\Release\net9.0-windows\SimpleTradingApp.exe
+C:\IBKRTradingBlazor\SimpleTradingApp\bin\Release\net9.0-windows\SimpleTradingApp.deps.json
+C:\IBKRTradingBlazor\SimpleTradingApp\bin\Release\net9.0-windows\SimpleTradingApp.runtimeconfig.json
+C:\IBKRTradingBlazor\SimpleTradingApp\bin\Release\net9.0-windows\SimpleTradingApp.dll
+C:\IBKRTradingBlazor\SimpleTradingApp\bin\Release\net9.0-windows\SimpleTradingApp.pdb
+C:\IBKRTradingBlazor\SimpleTradingApp\obj\Release\net9.0-windows\SimpleTradingApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\IBKRTradingBlazor\SimpleTradingApp\obj\Release\net9.0-windows\SimpleTradingApp.AssemblyInfoInputs.cache
+C:\IBKRTradingBlazor\SimpleTradingApp\obj\Release\net9.0-windows\SimpleTradingApp.AssemblyInfo.cs
+C:\IBKRTradingBlazor\SimpleTradingApp\obj\Release\net9.0-windows\SimpleTradingApp.csproj.CoreCompileInputs.cache
+C:\IBKRTradingBlazor\SimpleTradingApp\obj\Release\net9.0-windows\SimpleTradingApp.dll
+C:\IBKRTradingBlazor\SimpleTradingApp\obj\Release\net9.0-windows\refint\SimpleTradingApp.dll
+C:\IBKRTradingBlazor\SimpleTradingApp\obj\Release\net9.0-windows\SimpleTradingApp.pdb
+C:\IBKRTradingBlazor\SimpleTradingApp\obj\Release\net9.0-windows\SimpleTradingApp.genruntimeconfig.cache
+C:\IBKRTradingBlazor\SimpleTradingApp\obj\Release\net9.0-windows\ref\SimpleTradingApp.dll

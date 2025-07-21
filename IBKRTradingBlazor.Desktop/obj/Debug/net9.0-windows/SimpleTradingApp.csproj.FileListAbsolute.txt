@@ -1,0 +1,5 @@
+C:\IBKRTradingBlazor\IBKRTradingBlazor.Desktop\obj\Debug\net9.0-windows\SimpleTradingApp.csproj.AssemblyReference.cache
+C:\IBKRTradingBlazor\IBKRTradingBlazor.Desktop\obj\Debug\net9.0-windows\SimpleTradingApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\IBKRTradingBlazor\IBKRTradingBlazor.Desktop\obj\Debug\net9.0-windows\SimpleTradingApp.AssemblyInfoInputs.cache
+C:\IBKRTradingBlazor\IBKRTradingBlazor.Desktop\obj\Debug\net9.0-windows\SimpleTradingApp.AssemblyInfo.cs
+C:\IBKRTradingBlazor\IBKRTradingBlazor.Desktop\obj\Debug\net9.0-windows\SimpleTradingApp.csproj.CoreCompileInputs.cache

@@ -1,0 +1,38 @@
+[
+  {
+    "Name": "Dead Cat",
+    "StopLoss": "low",
+    "TrailingStop": "",
+    "ProfitTaking": "vwap",
+    "PartialPct": 0,
+    "ExitRule": "",
+    "Selected": true
+  },
+  {
+    "Name": "Arndt Daily 1/3 Breakeven",
+    "StopLoss": "low",
+    "TrailingStop": "",
+    "ProfitTaking": "entry * 1.05",
+    "PartialPct": 33.3,
+    "ExitRule": "move_stop_to_breakeven_after_partial",
+    "Selected": true
+  },
+  {
+    "Name": "Arndt Weekly 1/3 Breakeven",
+    "StopLoss": "low_of_week",
+    "TrailingStop": "",
+    "ProfitTaking": "entry * 1.05",
+    "PartialPct": 33.3,
+    "ExitRule": "move_stop_to_breakeven_after_partial",
+    "Selected": true
+  },
+  {
+    "Name": "Basic Arndt",
+    "StopLoss": "low if entry_type == \u0027Long\u0027 else high",
+    "TrailingStop": "atr * 1.5",
+    "ProfitTaking": "entry \u002B (8 * atr) if entry_type == \u0027Long\u0027 else entry - (tp_mult * atr)",
+    "PartialPct": 0,
+    "ExitRule": "",
+    "Selected": false
+  }
+]

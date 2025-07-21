@@ -1,0 +1,8 @@
+{
+  "TradingMode": "Paper Trading",
+  "ConnectionType": "TWS",
+  "Host": "127.0.0.1",
+  "Port": 7497,
+  "DefaultRisk": 25,
+  "Account": "Demo Account"
+}

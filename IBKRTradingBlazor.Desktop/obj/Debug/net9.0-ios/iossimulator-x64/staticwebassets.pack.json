@@ -1,0 +1,37 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\IBKRTradingBlazor\\IBKRTradingBlazor.Desktop\\obj\\Debug\\net9.0-ios\\iossimulator-x64\\scopedcss\\bundle\\IBKRTradingBlazor.Desktop.styles.css",
+      "PackagePath": "staticwebassets\\IBKRTradingBlazor.Desktop.styles.css"
+    },
+    {
+      "Id": "C:\\IBKRTradingBlazor\\IBKRTradingBlazor.Desktop\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\IBKRTradingBlazor\\IBKRTradingBlazor.Desktop\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0-ios\\iossimulator-x64\\staticwebassets\\msbuild.IBKRTradingBlazor.Desktop.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0-ios\\iossimulator-x64\\staticwebassets\\msbuild.IBKRTradingBlazor.Desktop.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0-ios\\iossimulator-x64\\staticwebassets\\msbuild.build.IBKRTradingBlazor.Desktop.props",
+      "PackagePath": "build\\IBKRTradingBlazor.Desktop.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0-ios\\iossimulator-x64\\staticwebassets\\msbuild.buildMultiTargeting.IBKRTradingBlazor.Desktop.props",
+      "PackagePath": "buildMultiTargeting\\IBKRTradingBlazor.Desktop.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0-ios\\iossimulator-x64\\staticwebassets\\msbuild.buildTransitive.IBKRTradingBlazor.Desktop.props",
+      "PackagePath": "buildTransitive\\IBKRTradingBlazor.Desktop.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

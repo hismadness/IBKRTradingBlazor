@@ -1,0 +1,80 @@
+@page "/premarketorders"
+
+<h3>Pre Market Orders</h3>
+
+<EditForm Model="preMarketModel" OnValidSubmit="PlacePreMarketOrder">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="mb-3">
+        <label for="ticker" class="form-label">Ticker</label>
+        <InputText id="ticker" class="form-control" @bind-Value="preMarketModel.Ticker" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Order Type</label>
+        <InputRadioGroup @bind-Value="preMarketModel.OrderType">
+            <InputRadio Value="OrderType.Long" /> Long
+            <InputRadio Value="OrderType.Short" /> Short
+        </InputRadioGroup>
+    </div>
+    <div class="mb-3">
+        <label for="risk" class="form-label">Risk %</label>
+        <InputNumber id="risk" class="form-control" @bind-Value="preMarketModel.RiskPercent" />
+    </div>
+    <div class="mb-3">
+        <label for="entry" class="form-label">Entry Price</label>
+        <InputNumber id="entry" class="form-control" @bind-Value="preMarketModel.EntryPrice" />
+    </div>
+    <div class="mb-3">
+        <label for="stop" class="form-label">Stop Loss</label>
+        <InputNumber id="stop" class="form-control" @bind-Value="preMarketModel.StopLoss" />
+    </div>
+    <div class="mb-3">
+        <label for="takeprofit" class="form-label">Take Profit</label>
+        <InputNumber id="takeprofit" class="form-control" @bind-Value="preMarketModel.TakeProfit" />
+    </div>
+    <div class="mb-3">
+        <label for="trailing" class="form-label">Trailing Stop</label>
+        <InputNumber id="trailing" class="form-control" @bind-Value="preMarketModel.TrailingStop" />
+    </div>
+    <button type="submit" class="btn btn-primary">Place Pre-Market Order</button>
+</EditForm>
+
+<hr />
+
+<h4>Pre-Market Chart Quadrant</h4>
+<div class="row">
+    <div class="col-6">
+        <div class="border p-2 mb-2">Weekly Chart (placeholder)</div>
+        <div class="border p-2">Daily Chart (placeholder)</div>
+    </div>
+    <div class="col-6">
+        <div class="border p-2 mb-2">Hourly Chart (placeholder)</div>
+        <div class="border p-2">5-Minute Chart (placeholder)</div>
+    </div>
+</div>
+
+@code {
+    private PreMarketModel preMarketModel = new();
+
+    private void PlacePreMarketOrder()
+    {
+        // TODO: Implement pre-market order placement logic
+    }
+
+    public class PreMarketModel
+    {
+        public string Ticker { get; set; } = string.Empty;
+        public OrderType OrderType { get; set; } = OrderType.Long;
+        public decimal RiskPercent { get; set; } = 0.25M;
+        public decimal EntryPrice { get; set; }
+        public decimal StopLoss { get; set; }
+        public decimal TakeProfit { get; set; }
+        public decimal TrailingStop { get; set; }
+    }
+
+    public enum OrderType
+    {
+        Long,
+        Short
+    }
+} 

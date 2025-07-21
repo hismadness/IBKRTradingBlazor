@@ -1,0 +1,19 @@
+@using Microsoft.AspNetCore.Components.Web
+@inherits LayoutComponentBase
+
+<div class="page">
+    <div class="sidebar">
+        <_NavMenu />
+    </div>
+
+    <main>
+        <div class="tab-ribbon">
+            <NavLink class="tab-link" href="/trading" Match="NavLinkMatch.All">Trading</NavLink>
+            <NavLink class="tab-link" href="/tradingrules">Trading Rules</NavLink>
+            <NavLink class="tab-link" href="/settings">Settings</NavLink>
+        </div>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div> 

@@ -1,0 +1,1 @@
+C:\IBKRTradingBlazor\temp_publish\web.config

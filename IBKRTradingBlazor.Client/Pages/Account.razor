@@ -1,0 +1,67 @@
+@page "/account"
+@inject HttpClient Http
+
+<h3>Account</h3>
+@if (accountSummary == null)
+{
+    <div>Loading account information...</div>
+}
+else if (accountSummary.Count == 0)
+{
+    <div>No account information available.</div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Account</th>
+                <th>Tag</th>
+                <th>Value</th>
+                <th>Currency</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in accountSummary)
+            {
+                <tr>
+                    <td>@item.Account</td>
+                    <td>@item.Tag</td>
+                    <td>@item.Value</td>
+                    <td>@item.Currency</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<AccountSummaryItem>? accountSummary;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAccountSummary();
+    }
+
+    private async Task LoadAccountSummary()
+    {
+        accountSummary = null;
+        try
+        {
+            accountSummary = await Http.GetFromJsonAsync<List<AccountSummaryItem>>("/api/account");
+        }
+        catch
+        {
+            accountSummary = new List<AccountSummaryItem>();
+        }
+        StateHasChanged();
+    }
+
+    public class AccountSummaryItem
+    {
+        public string? Account { get; set; }
+        public string? Tag { get; set; }
+        public string? Value { get; set; }
+        public string? Currency { get; set; }
+    }
+} 

@@ -1,0 +1,176 @@
+@page "/trading"
+
+@inject IBKRTradingBlazor.Desktop.Services.TradingModeService TradingModeService
+@inject IBKRTradingBlazor.Desktop.Services.IbkrService PaperService
+@inject IBKRTradingBlazor.Desktop.Services.RealIbkrService LiveService
+
+<PageTitle>Trading Dashboard</PageTitle>
+
+<h1>Trading Dashboard</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-lg-8 offset-lg-2">
+            <div class="alert alert-info">
+                <strong>Status:</strong> Application Loaded Successfully
+            </div>
+            <div class="d-flex justify-content-end mb-3">
+                <button class="btn btn-primary me-2" @onclick="ConnectToIbkr">Connect to IBKR</button>
+                <button class="btn btn-secondary" @onclick="DisconnectFromIbkr">Disconnect</button>
+            </div>
+            <!-- Trading Panel -->
+            <div class="card mb-4">
+                <div class="card-header bg-dark text-white">Trading Panel</div>
+                <div class="card-body">
+                    <!-- Place your trading form/components here -->
+                    <div class="row g-3 align-items-end">
+                        <div class="col-md-4">
+                            <label>Symbol</label>
+                            <input class="form-control" value="AAPL" readonly />
+                        </div>
+                        <div class="col-md-4">
+                            <label>Order Type</label>
+                            <select class="form-select">
+                                <option>Market</option>
+                                <option>Limit</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Quantity</label>
+                            <input class="form-control" value="100" type="number" />
+                        </div>
+                        <div class="col-md-2">
+                            <label>Price</label>
+                            <input class="form-control" value="225.48" type="number" step="0.01" />
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-3">
+                        <button class="btn btn-success w-50 me-2">BUY</button>
+                        <button class="btn btn-danger w-50 ms-2">SELL</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Account Summary -->
+            <div class="card mb-3">
+                <div class="card-header bg-primary text-white">Account Summary</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div><strong>Net Liquidation:</strong> $100,000.00 USD</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div><strong>Buying Power:</strong> $200,000.00 USD</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div><strong>Available Funds:</strong> $50,000.00 USD</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Positions -->
+            <div class="card mb-3">
+                <div class="card-header bg-secondary text-white">Positions</div>
+                <div class="card-body p-0">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Position</th>
+                                <th>Avg Cost</th>
+                                <th>Market Price</th>
+                                <th>P&L %</th>
+                                <th>ATR Factor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var pos in positions)
+                            {
+                                var isPositive = pos.PercentGain >= 0;
+                                <tr class="@(isPositive ? "bg-success bg-opacity-25" : "bg-danger bg-opacity-25")">
+                                    <td>@pos.Symbol</td>
+                                    <td>@pos.Position</td>
+                                    <td>@pos.AvgCost.ToString("C2")</td>
+                                    <td>@pos.MarketPrice.ToString("C2")</td>
+                                    <td class="@(isPositive ? "text-success" : "text-danger")">@pos.PercentGain.ToString("+#.##%;-#.##%")</td>
+                                    <td>@pos.ATRFactor.ToString("0.00")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Order History (optional, can be moved to another tab) -->
+            <div class="card mb-3">
+                <div class="card-header bg-info text-white">Order History</div>
+                <div class="card-body p-0">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Symbol</th>
+                                <th>Side</th>
+                                <th>Shares</th>
+                                <th>Price</th>
+                                <th>Time</th>
+                                <th>P&L</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>AAPL</td>
+                                <td>BUY</td>
+                                <td>100</td>
+                                <td>$150.00</td>
+                                <td>2024-01-15 09:30:00</td>
+                                <td class="text-success">$500.00</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>MSFT</td>
+                                <td>SELL</td>
+                                <td>25</td>
+                                <td>$305.00</td>
+                                <td>2024-01-14 14:45:00</td>
+                                <td class="text-danger">-$50.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<IBKRTradingBlazor.Desktop.Models.PositionInfo> positions = new();
+    private IBKRTradingBlazor.Desktop.Services.IbkrService Service =>
+        TradingModeService.CurrentMode == IBKRTradingBlazor.Desktop.Services.TradingMode.Live ? LiveService : PaperService;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Subscribe to updates
+        Service.PositionsUpdated += OnPositionsUpdated;
+        await Service.ConnectAsync();
+        await Service.LoadAccountDataAsync();
+        positions = Service.GetPositions();
+    }
+
+    private void OnPositionsUpdated(List<IBKRTradingBlazor.Desktop.Models.PositionInfo> updated)
+    {
+        positions = updated;
+        StateHasChanged();
+    }
+
+    private async Task ConnectToIbkr()
+    {
+        // Simple mock connection
+        await Task.Delay(1000);
+    }
+
+    private async Task DisconnectFromIbkr()
+    {
+        // Simple mock disconnection
+        await Task.Delay(500);
+    }
+} 

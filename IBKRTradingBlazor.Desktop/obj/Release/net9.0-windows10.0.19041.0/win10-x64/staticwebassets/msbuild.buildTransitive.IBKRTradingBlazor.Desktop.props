@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\IBKRTradingBlazor.Desktop.props" />
+</Project>

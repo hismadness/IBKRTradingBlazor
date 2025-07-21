@@ -1,0 +1,1 @@
+public double ATRFactor { get; set; } // TODO: Calculate as (MarketPrice / SMA50) / ATR 
